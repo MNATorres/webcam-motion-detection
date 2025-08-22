@@ -1,18 +1,19 @@
+
 # Webcam Motion Detection
 
 ![Motion Detection Banner](https://img.shields.io/badge/OpenCV-Motion%20Detection-blue?style=for-the-badge&logo=opencv)
 
-Detecta y registra intervalos de movimiento usando tu webcam, OpenCV y pandas. Guarda los resultados en un archivo CSV.
+Detect and log motion intervals using your webcam, OpenCV, and pandas. Results are saved in a CSV file.
 
 ---
 
-## 🚀 Requisitos
+## 🚀 Requirements
 
 - Python 3.8+
 - [OpenCV](https://pypi.org/project/opencv-python/)
 - [pandas](https://pypi.org/project/pandas/)
 
-Instala dependencias con:
+Install dependencies with:
 
 ```bash
 pip install opencv-python pandas
@@ -20,31 +21,31 @@ pip install opencv-python pandas
 
 ---
 
-## 🖥️ Uso rápido
+## 🖥️ Quick Start
 
-1. Clona este repositorio o descarga los archivos.
-2. Ejecuta el script principal:
+1. Clone this repository or download the files.
+2. Run the main script:
 
 ```bash
 python capture.py
 ```
 
-3. Se abrirán varias ventanas mostrando el video y el procesamiento.
-4. Presiona `q` para finalizar la grabación.
-5. Consulta los intervalos de movimiento detectados en el archivo `Times.csv`.
+3. Several windows will open showing the video and processing steps.
+4. Press `q` to stop recording.
+5. Check the detected motion intervals in the `Times.csv` file.
 
 ---
 
-## 📂 ¿Qué hace el script?
+## 📂 What does the script do?
 
-- Inicia la webcam y analiza el video en tiempo real.
-- Detecta cambios significativos entre frames (movimiento).
-- Marca los momentos de inicio y fin de cada movimiento.
-- Guarda los intervalos en un archivo CSV para su análisis posterior.
+- Starts the webcam and analyzes video in real time.
+- Detects significant changes between frames (motion).
+- Marks the start and end times of each motion event.
+- Saves the intervals in a CSV file for later analysis.
 
 ---
 
-## 📝 Ejemplo de salida (`Times.csv`)
+## 📝 Example output (`Times.csv`)
 
 | Start                | End                  |
 |----------------------|---------------------|
@@ -53,18 +54,18 @@ python capture.py
 
 ---
 
-## 🎨 Créditos y recursos
+## 🎨 Credits & Resources
 
-- Basado en tutoriales de OpenCV y pandas.
-- Autor: MNATorres
-
----
-
-## 💡 Notas
-
-- Puedes ajustar la sensibilidad cambiando el valor de área mínima en el script (`cv2.contourArea(contour) < 1000`).
-- El script funciona en Windows, Linux y MacOS.
+- Based on OpenCV and pandas tutorials.
+- Author: MNATorres
 
 ---
 
-¡Contribuciones y sugerencias son bienvenidas!
+## 💡 Notes
+
+- You can adjust the sensitivity by changing the minimum area value in the script (`cv2.contourArea(contour) < 1000`).
+- The script works on Windows, Linux, and MacOS.
+
+---
+
+Contributions and suggestions are welcome!
