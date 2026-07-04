@@ -9,15 +9,18 @@ A single-script webcam motion detector. `capture.py` reads frames from the defau
 ## Commands
 
 ```bash
-pip install opencv-python pandas   # dependencies (no requirements.txt / venv)
+pip install opencv-python pandas   # runtime dependencies (no requirements.txt / venv)
 python capture.py                  # run; opens 4 preview windows, press 'q' to quit and write Times.csv
+
+pip install pytest                 # test dependency
+python -m pytest                   # run the tests (no camera needed)
 ```
 
-There are no tests, linter, or build step.
+There is no linter or build step.
 
 ## How the detection works (capture.py)
 
-The whole program is one `while` loop over camera frames. Key details worth knowing before editing:
+The camera loop lives in `main()`; the per-frame logic is factored into pure, testable functions (`preprocess_frame`, `detect_motion`, `record_transition`, `pair_times`, `build_dataframe`) that `test_capture.py` covers without a webcam. Key details worth knowing before editing:
 
 - **Reference frame model**: the *first* captured frame (grayscaled + Gaussian-blurred) is stored as `first_frame` and every later frame is diff'd against it — it is never updated. So detection is relative to the initial scene, not the previous frame; lighting drift or a moved object that stays put will keep reading as motion.
 - **Motion pipeline**: grayscale → `GaussianBlur(21,21)` → `absdiff` vs `first_frame` → `threshold(30)` → `dilate(iterations=2)` → `findContours`. A contour with `contourArea >= 1000` counts as motion. Lower the `1000` for more sensitivity, raise it for less (documented in README).
